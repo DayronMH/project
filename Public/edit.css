@@ -1,0 +1,367 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0f2e9 0%, #fcfdfc7f 100%);
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.edit-header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    color: #2c7a51;
+    text-transform: uppercase;
+    height: auto;
+}
+
+.edit-header h1 {
+    margin-bottom: 20px;
+    color: #2c7a51;
+}
+
+.form-trees {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-trees::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ffffff, #e5e6e5);
+    opacity: 1;
+}
+
+.form-species {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-species::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #3cb371, #2e8b57);
+    opacity: 1;
+}
+
+.form-tree {
+    margin-bottom: 25px;
+}
+
+.form-tree label {
+    display: block;
+    color: #2c7a51;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-tree input[type="text"],
+.form-tree input[type="number"],
+.form-tree input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0f2e9;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-tree input[type="text"]:focus,
+.form-tree input[type="number"]:focus {
+    border-color: #3cb371;
+    outline: none;
+    box-shadow: 0 0 10px rgba(60, 179, 113, 0.1);
+}
+
+.form-tree input[type="radio"] {
+    margin-right: 5px;
+}
+
+.form-tree input[type="radio"] + span {
+    margin-right: 20px;
+    color: #2c7a51;
+}
+
+.form-tree input[type="file"] {
+    padding: 8px;
+    background: #fff;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    color: #2c7a51;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0f2e9;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.submit-button, .cancel-button, .delete-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.submit-button {
+    background-color: #3cb371;
+    border :2px solid #ffffff;
+    color:#ffffff;
+}
+
+.submit-button:hover {
+    background-color: #7f8c8d00;
+    border :2px solid #3cb371;
+    color:#3cb371;
+    transform: translateY(-2px);
+}
+
+.cancel-button {
+    background-color: #848686;
+    border :2px solid #ffffff;
+    color:#ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel-button:hover {
+    background-color: #7f8c8d00;
+    border :2px solid #848686;
+    color:#848686;
+    transform: translateY(-2px);
+}
+:focus {
+    outline: 0;
+    border-color: #eb4747;
+    box-shadow: 0 0 0 4px #b5c9fc;
+  }
+  .delete-btn{
+    background-color: #a61a1a;
+    border :2px solid #ffffff;
+    color:#ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn:hover {
+    border :2px solid #a61a1a;
+    color:#a61a1a;
+    background-color: #7f8c8d00;
+    transform: translateY(-2px);
+}
+  
+  .mydict div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  
+  .mydict input[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .mydict input[type="radio"]:checked + span {
+    box-shadow: 0 0 0 0.0625em #048a11;
+    background-color: #dee7ff;
+    z-index: 1;
+    color: #188b2f;
+  }
+  
+  label span {
+    display: block;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 0.375em .75em;
+    position: relative;
+    margin-left: .0625em;
+    box-shadow: 0 0 0 0.0625em #b5bfd9;
+    letter-spacing: .05em;
+    color: #3e6346;
+    text-align: center;
+    transition: background-color .5s ease;
+  }
+  
+  label:first-child span {
+    border-radius: .375em 0 0 .375em;
+  }
+  
+  label:last-child span {
+    border-radius: 0 .375em .375em 0;
+  }
+  
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3cb371;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+
+.back-button::before {
+    content: "";
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2e8b57;
+    transform: translateX(-5px);
+    box-shadow: 0 4px 8px rgba(46, 139, 87, 0.2);
+}
+
+
+.mydict label span {
+    display: block;
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 0.5em 1em;
+    position: relative;
+    box-shadow: 0 0 0 0.0625em #96ec857f;
+    letter-spacing: .05em;
+    color: #2c7a51;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.mydict label span:hover {
+    background-color: #f0f9f4;
+    box-shadow: 0 0 0 0.0625em #3cb371;
+    transform: translateY(-1px);
+}
+
+.mydict input[type="radio"]:focus + span {
+    outline: none;
+    box-shadow: 0 0 0 0.0625em #2c7a51, 0 0 0 0.1875em rgba(44, 122, 81, 0.2);
+}
+
+.mydict input[type="radio"]:checked + span {
+    animation: select-bounce 0.2s ease;
+}
+
+@keyframes select-bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+    100% { transform: translateY(-1px); }
+}
+
+@media (max-width: 768px) {
+    .mydict div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .mydict label {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .mydict label span {
+        width: 100%;
+        border-radius: 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 1rem auto;
+    }
+
+    .form-trees, .form-species {
+        padding: 20px;
+    }
+
+    .edit-header h1 {
+        font-size: 1.5em;
+    }
+
+    .submit-button, .cancel-button, .back-button {
+        padding: 10px 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .submit-button, .cancel-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

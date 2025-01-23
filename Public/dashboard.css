@@ -1,0 +1,586 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f1f0f0 0%, #ffffff 100%);
+    min-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+    color: #1b5e20;
+    text-transform: uppercase;
+    height: auto;
+    width: 100%;
+}
+
+.dashboard-header h1 {
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+.dashboard-header h2 {
+    
+    padding-bottom: 0;
+    margin-top: 0px;
+    color: #388e3c;
+    font-size: 1.5em;
+}
+
+.dashboard-header hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #43a047, #66bb6a);
+    width: 80%;
+    margin: 0 auto 5em auto;
+    border-radius: 2px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(129, 199, 132, 0.2);
+}
+
+.stat-card::before,
+.stat-card::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    transition: all 0.7s ease;
+}
+
+.stat-card::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #43a047, #66bb6a);
+}
+
+.stat-card::after {
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right, rgba(129, 199, 132, 0.1) 0%, rgba(129, 199, 132, 0.2) 50%, rgba(129, 199, 132, 0.1) 100%);
+    transform: rotate(30deg);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card:hover::before,
+.stat-card:hover::after {
+    opacity: 1;
+    transform: translate(150%, -150%);
+}
+
+.stat-content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-title {
+    color: #2e7d32;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-card:nth-child(1) .stat-number {
+    background-image: linear-gradient(45deg, #43a047, #66bb6a);
+}
+
+.stat-card:nth-child(2) .stat-number {
+    background-image: linear-gradient(45deg, #2e7d32, #43a047);
+}
+
+.stat-card:nth-child(3) .stat-number {
+    background-image: linear-gradient(45deg, #1b5e20, #2e7d32);
+}
+
+.species-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.species-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(129, 199, 132, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.species-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.species-info {
+    text-align: center;
+}
+
+.species-name {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.species-content {
+    margin-bottom: 20px;
+}
+
+.species-description {
+    font-size: 1em;
+    color: #1b5e20;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+.species-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.action-button,
+.view-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn {
+    background-color: #43a047;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #66bb6a;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #43a047;
+}
+
+.delete-btn {
+    background-color: #e57373;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #ef5350;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2em 0;
+    margin-left: 0;
+}
+
+.create-btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -1em;
+    background: linear-gradient(45deg, #2e7d32, #43a047);
+    color: white;
+    padding: 2px 1em 2px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(67, 160, 71, 0.3);
+    min-width: 200px;
+    max-width: 300px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.create-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(67, 160, 71, 0.4);
+    background: linear-gradient(45deg, #1b5e20, #2e7d32);
+}
+
+.create-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(67, 160, 71, 0.4);
+}
+
+
+.friends-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.friend-link {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(129, 199, 132, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.friend-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #43a047, #66bb6a);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.dashboard-section {
+    margin-Top: 50px;
+}
+.friend-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.friend-link:hover::before {
+    opacity: 1;
+}
+
+.friend-name {
+    color: #2e7d32;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.friend-link:hover .friend-name {
+    background-image: linear-gradient(45deg, #43a047, #66bb6a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background:none;
+    color:#1b5e20;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 200;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    border: 2px solid #1b5e20;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    border: 2px solid #1b5e20;
+    background: fixed transparent;
+}
+
+.back-button:active {
+    transform: translateY(-1px);
+    border: 2px solid #1b5e20;
+}
+.stat-card,
+.species-card,
+.friend-link {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(129, 199, 132, 0.2);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.stat-card:hover,
+.species-card:hover,
+.friend-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Stat Number and Title */
+.stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-title,
+.species-name {
+    color: #2e7d32;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+@media (max-width: 768px) {
+    .friends-container {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .friend-link {
+        padding: 15px;
+    }
+    
+    .friend-name {
+        font-size: 1.2em;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 28px;
+    }
+    
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    .stat-title {
+        font-size: 16px;
+    }
+    
+    .stats-container,
+    .species-container {
+        gap: 20px;
+        padding: 10px;
+    }
+
+    
+    .species-card {
+        padding: 15px;
+    }
+    
+    .species-name {
+        font-size: 1.6em;
+    }
+    
+    .species-description {
+        font-size: 0.9em;
+    }
+
+    .create-btn {
+        width: 90%;
+        max-width: none;
+        font-size: 1em;
+        margin: 20px auto;
+    }
+}
+.action-button,
+.view-btn,
+.edit-btn,
+.delete-btn,
+.create-btn,
+.back-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn {
+    background-color: #43a047;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #2e7d32;
+}
+@media (max-width: 768px) {
+    .dashboard-header h1 {
+        font-size: 28px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.2em;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .stat-title {
+        font-size: 16px;
+    }
+
+    .species-name {
+        font-size: 1.6em;
+    }
+
+    .create-btn {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .stats-container,
+    .species-container,
+    .friends-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .dashboard-header h2 {
+        font-size: 1.2em;
+        margin-left: 10%;
+    }
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .dashboard-header {
+        padding: 0px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1. 5em;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.2em;
+    }
+
+    .dashboard-header hr {
+        width: 90%;
+    }
+
+    .stats-container,
+    .species-container,
+    .friends-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-card,
+    .species-card,
+    .friend-link {
+        padding: 15px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .stat-title {
+        font-size: 14px;
+    }
+
+    .species-name {
+        font-size: 1.5em;
+    }
+
+    .species-description {
+        font-size: 0.9em;
+    }
+
+    .action-button,
+    .view-btn,
+    .edit-btn,
+    .delete-btn,
+    .create-btn,
+    .back-button {
+        font-size: 0.8em;
+        padding: 8px 12px;
+    }
+
+    .button-container .create-btn {
+        min-width: 150px;
+        
+    }
+
+    .back-button {
+        top: 15px;
+        left: 10px;
+    }
+}

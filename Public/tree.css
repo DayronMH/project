@@ -1,0 +1,256 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eceded;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.view-header {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(46, 139, 87, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-header h1 {
+    color: #2c7a51;
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.edit-user-button, .back-button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.edit-user-button {
+    background-color: #3cb371;
+    color: white;
+}
+
+.edit-user-button:hover {
+    background-color: #2e8b57;
+}
+
+.back-button {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: #7f8c8d;
+}
+
+.trees-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.tree-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(46, 139, 87, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tree-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(46, 139, 87, 0.15);
+}
+
+.tree-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tree-info {
+    padding: 20px;
+}
+
+.tree-name {
+    color: #2c7a51;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.tree-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-label {
+    color: #5f9ea0;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.detail-value {
+    color: #2c7a51;
+    font-size: 1em;
+}
+
+.trees-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    flex: 1;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #3cb371;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #2e8b57;
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.create-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-btn:hover {
+    background-color: #2e8b57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(46, 139, 87, 0.2);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #3cb371;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    gap: 8px;
+}
+
+.back-button::before {
+    content: "←";
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2e8b57;
+    transform: translateX(-5px);
+    box-shadow: 0 4px 8px rgba(46, 139, 87, 0.2);
+}
+
+.back-button:hover::before {
+    transform: translateX(-3px);
+}
+
+.back-button:active {
+    transform: translateX(-2px);
+    box-shadow: 0 2px 4px rgba(46, 139, 87, 0.1);
+}
+
+@media (max-width: 768px) {
+    .back-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .view-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .edit-user-button, .back-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .trees-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tree-details {
+        grid-template-columns: 1fr;
+    }
+}
